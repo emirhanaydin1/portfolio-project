@@ -12,7 +12,7 @@
 }
 
 body {
-    overflow: hidden;
+   
     font-family: "Author", sans-serif;
     color: var(--white);
     display: grid;
