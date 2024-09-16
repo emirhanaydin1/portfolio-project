@@ -35,6 +35,7 @@ body {
       "side"
       "main"
       ;
+      overflow: visible;
     }
     .box{
         min-width: 100%;
