@@ -21,6 +21,10 @@ body {
 
 @media only screen and (max-width: 800px) {
 
+  *{
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     margin-left: 5%;
     margin-right: 5%;
@@ -34,7 +38,7 @@ body {
     font-size: 4vw;
   }
 
-  * {
+  .card {
     margin-top: 5%;
   }
 
@@ -42,6 +46,7 @@ body {
     padding: 5% !important;
     min-width: 80%;
     min-height: 100vw;
+    margin-top: 5%;
   }
 
   .card {
@@ -73,7 +78,6 @@ body {
     height: 20% !important;
     z-index: 2;
   }
-
   aside {
     font-size: 5vw;
   }
