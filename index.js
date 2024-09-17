@@ -41,17 +41,22 @@ function loadContent(url) {
 
 function home() {
     loadContent('pages/homepage.html');
+    localStorage.lastpage = 'pages/homepage.html';
 }
 
 function projects() {
     loadContent('pages/projects.html');
+    localStorage.lastpage = 'pages/projects.html';
 }
 
 function social() {
     loadContent('pages/social.html');
+    localStorage.lastpage = 'pages/social.html';
 }
+
+
 
 // Sayfa yüklendiğinde ana içeriği yükleyin
 document.addEventListener('DOMContentLoaded', function() {
-    loadContent('pages/homepage.html');
+    loadContent(localStorage.lastpage);
 });
