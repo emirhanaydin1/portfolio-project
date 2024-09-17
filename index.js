@@ -50,6 +50,7 @@ function projects() {
 }
 
 function social() {
+    fetchInstagramProfilePicture();
     loadContent('pages/social.html');
     localStorage.lastpage = 'pages/social.html';
 }
@@ -58,5 +59,36 @@ function social() {
 
 // Sayfa yüklendiğinde ana içeriği yükleyin
 document.addEventListener('DOMContentLoaded', function() {
+    fetchInstagramProfilePicture();
     loadContent(localStorage.lastpage);
 });
+
+
+
+// Access token'inizi buraya yapıştırın (kullanıcı doğrulaması yapılmış olmalı)
+const accessToken = 'EAAUWrJk0osgBO0kNZBPPyPdcA3LVo25v2fEiQyWSEbEwd0EgjlfjZCxGr98ZCKq9e9UHY8MD8O5k7dvPzITRd2nRGRJzjHxQiiYZCZCkPi5H1sPXZBZAK0yQ4qptxzFs4Q6lDK1HzgCGrx9M4wvDWZCZATBdW3fH1ijNLDJAKjmbj2hAM9LlOv0xPckZBcgPRiMDK0ZCWLYaoERR5Oubi6A45zkLIZAjdIq26FEMdDDyutZBsagZDZD';  // Facebook Developer'dan alınan Access Token
+
+// Kullanıcı ID'sini girin
+const instagramUserID = '17841456867797955';  // Instagram kullanıcı ID'si
+
+// Instagram Profil Fotoğrafını Çekmek İçin API Çağrısı
+const fetchInstagramProfilePicture = async () => {
+    const apiURL = `https://graph.facebook.com/v17.0/${instagramUserID}?fields=profile_picture_url,followers_count,biography&access_token=${accessToken}`;
+    try {
+        const response = await fetch(apiURL);
+        const data = await response.json();
+
+        if (data.profile_picture_url) {
+            // Profil fotoğrafı URL'sini <img> etiketine yerleştir
+            document.getElementById("profile-pic").src = data.profile_picture_url;
+            document.getElementById("biography").innerHTML = "Biography: <br>" + data.biography;
+            document.getElementById("followers").innerHTML =  document.getElementById("followers").innerHTML + data.followers_count;
+        } else {
+            console.error("Profil fotoğrafı bulunamadı ya da erişim izniniz yok.");
+        }
+    } catch (error) {
+        console.error("API isteği başarısız oldu: ", error);
+    }
+};
+// Fonksiyonu çağı
+
