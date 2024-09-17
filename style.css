@@ -53,9 +53,9 @@ body {
     min-height: 100%;
   }
 
-  ul {
-    display: none;
-  }
+  /* ul {
+    display: vis;
+  } */
 
   .content {
     -webkit-line-clamp: 3 !important;
